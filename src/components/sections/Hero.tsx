@@ -1,6 +1,49 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+
+const Typewriter = ({ words, speed = 150, delay = 3000 }: { words: string[], speed?: number, delay?: number }) => {
+    const [currentWordIndex, setCurrentWordIndex] = useState(0);
+    const [text, setText] = useState('');
+    const [isDeleting, setIsDeleting] = useState(false);
+
+    useEffect(() => {
+        const word = words[currentWordIndex];
+
+        const timer = setTimeout(() => {
+            if (isDeleting) {
+                setText(word.substring(0, text.length - 1));
+                if (text.length === 0) {
+                    setIsDeleting(false);
+                    setCurrentWordIndex((prev) => (prev + 1) % words.length);
+                }
+            } else {
+                setText(word.substring(0, text.length + 1));
+                if (text.length === word.length) {
+                    // Pause before deleting
+                    setTimeout(() => setIsDeleting(true), delay);
+                }
+            }
+        }, isDeleting ? speed / 2 : speed);
+
+        return () => clearTimeout(timer);
+    }, [text, isDeleting, currentWordIndex, words, speed, delay]);
+
+    return (
+        <span style={{
+            fontFamily: 'monospace',
+            color: 'var(--secondary)',
+            fontSize: '1rem',
+            display: 'block',
+            height: '1.5rem', // Min height to prevent jump
+            marginBottom: '1rem'
+        }}>
+            {text}
+            <span className="cursor-blink">|</span>
+        </span>
+    );
+};
 
 export function Hero() {
     return (
@@ -23,6 +66,11 @@ export function Hero() {
                     >
                         AI/ML Student (2nd Year)
                     </span>
+                    <Typewriter
+                        words={['[Python]', '[PyTorch]', '[TensorFlow]', '[System Design]', '[Deployments]']}
+                        speed={100}
+                        delay={2000}
+                    />
                 </motion.div>
 
                 <motion.h1
