@@ -1,8 +1,17 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export function Hero() {
+    const [activeName, setActiveName] = useState('Jeevananthan S');
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveName(prev => prev === 'Jeevananthan S' ? 'Zenthoriax' : 'Jeevananthan S');
+        }, 5000); // 5 seconds per name
+        return () => clearInterval(interval);
+    }, []);
     return (
         <section className="section container" style={{ alignItems: 'flex-start', minHeight: '90vh' }}>
             <div style={{ maxWidth: '800px', zIndex: 10 }}>
@@ -25,19 +34,28 @@ export function Hero() {
                     </span>
                 </motion.div>
 
-                <motion.h1
-                    className="text-gradient"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.3 }}
-                    style={{
-                        fontSize: 'clamp(3rem, 8vw, 6rem)',
-                        lineHeight: 1.1,
-                        marginBottom: '1.5rem'
-                    }}
-                >
-                    Jeevananthan S
-                </motion.h1>
+                <div style={{ height: 'clamp(3rem, 8vw, 6rem)', marginBottom: '1.5rem', position: 'relative' }}>
+                    <AnimatePresence mode="wait">
+                        <motion.h1
+                            key={activeName} // 'Jeevananthan S' or 'Zenthoriax'
+                            className="text-gradient"
+                            initial={{ opacity: 0, filter: 'blur(10px)' }}
+                            animate={{ opacity: 1, filter: 'blur(0px)' }}
+                            exit={{ opacity: 0, filter: 'blur(10px)' }}
+                            transition={{ duration: 1.5, ease: "easeInOut" }}
+                            style={{
+                                fontSize: 'clamp(3rem, 8vw, 6rem)',
+                                lineHeight: 1.1,
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                width: '100%'
+                            }}
+                        >
+                            {activeName}
+                        </motion.h1>
+                    </AnimatePresence>
+                </div>
 
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}

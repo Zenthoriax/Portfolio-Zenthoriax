@@ -44,6 +44,40 @@ function ProjectCard({ title, type, tech, description, learning, github }: { tit
     );
 }
 
+function MoreProjectsCard() {
+    return (
+        <a
+            href="https://github.com/Zenthoriax"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="glass-panel"
+            style={{
+                padding: '2rem',
+                display: 'flex',
+                flexDirection: 'column',
+                height: '100%',
+                textDecoration: 'none',
+                color: 'inherit',
+                cursor: 'pointer',
+                justifyContent: 'center',
+                alignItems: 'center',
+                textAlign: 'center',
+                minHeight: '300px',
+                background: 'rgba(255,255,255,0.02)'
+            }}
+        >
+            <div style={{ fontSize: '3rem', marginBottom: '1rem', opacity: 0.8 }}>⚡</div>
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>More Projects</h3>
+            <p style={{ opacity: 0.7, fontSize: '0.9rem', marginBottom: '1.5rem', maxWidth: '200px' }}>
+                Explore my full repository of code and experiments on GitHub.
+            </p>
+            <span className="text-accent" style={{ fontSize: '0.9rem', fontWeight: 600 }}>
+                Unknown/Portfolio-Zenthoriax ↗
+            </span>
+        </a>
+    );
+}
+
 export function Projects() {
     const projects = [
         {
@@ -77,22 +111,6 @@ export function Projects() {
             description: "A dockerized expense tracking system with a persistent database backend. Built to understand data persistence and containerization.",
             learning: "Gained practical experience with Dockerizing stateful applications and managing database schemas.",
             github: "https://github.com/Zenthoriax"
-        },
-        {
-            title: "Multi-Agent Debate System",
-            type: "LLM Orchestration",
-            tech: "LangChain, Python, OpenAI API",
-            description: "A framework where multiple LLM agents debate a topic to reach a consensus or explore diverse viewpoints. Implements a moderator agent to guide discourse.",
-            learning: "Explored prompt engineering patterns for agent interactions and state management in LLM workflows.",
-            github: "https://github.com/Zenthoriax"
-        },
-        {
-            title: "Autonomous Drone Pathing",
-            type: "Robotics Simulation",
-            tech: "ROS2, Gazebo, C++",
-            description: "Simulation environment for drone obstacle avoidance in complex terrains using LiDAR data. Focus on reactive path planning algorithms.",
-            learning: "Applied control theory basics and robotic operating system communication patterns in a simulated physics environment.",
-            github: "https://github.com/Zenthoriax"
         }
     ];
 
@@ -107,6 +125,7 @@ export function Projects() {
                 {projects.map((p, i) => (
                     <ProjectCard key={i} {...p} />
                 ))}
+                <MoreProjectsCard />
             </div>
         </section>
     );
