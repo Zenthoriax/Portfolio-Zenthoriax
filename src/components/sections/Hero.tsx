@@ -21,7 +21,6 @@ const Typewriter = ({ words, speed = 150, delay = 3000 }: { words: string[], spe
             } else {
                 setText(word.substring(0, text.length + 1));
                 if (text.length === word.length) {
-                    // Pause before deleting
                     setTimeout(() => setIsDeleting(true), delay);
                 }
             }
@@ -32,88 +31,114 @@ const Typewriter = ({ words, speed = 150, delay = 3000 }: { words: string[], spe
 
     return (
         <span style={{
-            fontFamily: 'monospace',
+            fontFamily: 'var(--font-outfit)',
             color: 'var(--secondary)',
-            fontSize: '1rem',
+            fontSize: '1.5rem',
             display: 'block',
-            height: '1.5rem', // Min height to prevent jump
-            marginBottom: '1rem'
+            minHeight: '2rem',
         }}>
             {text}
-            <span className="cursor-blink">|</span>
+            <span className="cursor-blink" style={{ color: 'var(--accent)' }}>.</span>
         </span>
     );
 };
 
 export function Hero() {
     return (
-        <section className="section container" style={{ alignItems: 'flex-start', minHeight: '90vh' }}>
-            <div style={{ maxWidth: '800px', zIndex: 10 }}>
+        <section className="section container" style={{ alignItems: 'flex-start', minHeight: '100vh', justifyContent: 'center' }}>
+            <div style={{ maxWidth: '900px', zIndex: 10 }}>
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
+                    initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.2 }}
+                    transition={{ duration: 0.5 }}
                 >
                     <span
                         className="text-accent"
                         style={{
-                            fontSize: '1.25rem',
-                            fontWeight: 500,
-                            display: 'block',
+                            fontSize: '1rem',
+                            fontWeight: 600,
+                            letterSpacing: '0.1em',
+                            textTransform: 'uppercase',
                             marginBottom: '1rem',
-                            letterSpacing: '0.05em'
+                            display: 'block'
                         }}
                     >
-                        AI/ML Student (2nd Year)
+                        Portfolio 2026
                     </span>
-                    <Typewriter
-                        words={['[Python]', '[PyTorch]', '[TensorFlow]', '[System Design]', '[Deployments]']}
-                        speed={100}
-                        delay={2000}
-                    />
                 </motion.div>
 
                 <motion.h1
                     className="text-gradient"
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.3 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.1 }}
                     style={{
-                        fontSize: 'clamp(3rem, 8vw, 6rem)',
-                        lineHeight: 1.1,
-                        marginBottom: '1.5rem'
+                        fontSize: 'clamp(3.5rem, 8vw, 7rem)',
+                        lineHeight: 1,
+                        marginBottom: '1.5rem',
+                        fontWeight: 700,
+                        letterSpacing: '-0.03em'
                     }}
                 >
                     Jeevananthan S
                 </motion.h1>
 
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.5 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
                     style={{
-                        fontSize: '1.25rem',
-                        opacity: 0.8,
-                        lineHeight: 1.6,
-                        maxWidth: '600px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '1rem',
                         marginBottom: '3rem'
                     }}
                 >
-                    Experimenting with <span className="text-accent">applied machine learning</span> and <span className="text-accent">deployment-oriented AI</span>.
-                    Focusing on moving models from notebooks to production-like environments through robust system design.
+                    <Typewriter
+                        words={['AI Researcher', 'System Architect', 'Full Stack Engineer']}
+                        speed={80}
+                        delay={2500}
+                    />
+                </motion.div>
+
+                <motion.p
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    style={{
+                        fontSize: '1.1rem',
+                        opacity: 0.7,
+                        lineHeight: 1.7,
+                        maxWidth: '550px',
+                        marginBottom: '3.5rem'
+                    }}
+                >
+                    Designing intelligence. I bridge the gap between abstract ML research and robust, production-grade deployment systems.
                 </motion.p>
 
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ type: 'spring', stiffness: 100, damping: 20, delay: 0.7 }}
-                    style={{ display: 'flex', gap: '1rem' }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                    style={{ display: 'flex', gap: '1.5rem' }}
                 >
-                    <a href="#projects" className="glass-panel" style={{ padding: '1rem 2rem', fontWeight: 600 }}>
-                        View Work
+                    <a href="#projects" className="glass-panel" style={{
+                        padding: '1rem 2.5rem',
+                        fontWeight: 500,
+                        background: 'rgba(255,255,255,0.1)',
+                        border: '1px solid rgba(255,255,255,0.2)'
+                    }}>
+                        Latest Work
                     </a>
-                    <a href="#about" style={{ padding: '1rem 2rem', opacity: 0.7, textDecoration: 'underline' }}>
-                        About Me
+                    <a href="https://github.com/Zenthoriax" target="_blank" style={{
+                        padding: '1rem 2.5rem',
+                        opacity: 0.7,
+                        fontWeight: 500,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem'
+                    }}>
+                        GitHub <span>↗</span>
                     </a>
                 </motion.div>
             </div>

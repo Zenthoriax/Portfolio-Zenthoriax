@@ -90,26 +90,51 @@ export function Projects() {
             description: "A dockerized expense tracking system with a persistent database backend. Built to understand data persistence and containerization.",
             learning: "Gained practical experience with Dockerizing stateful applications and managing database schemas.",
             github: "https://github.com/Zenthoriax/personal-finance-app"
+        },
+        {
+            title: "AI-Powered Spam Classifier",
+            type: "NLP & Text Classification",
+            tech: "Python, Scikit-learn, NLP (TF-IDF)",
+            stats: {
+                accuracy: "~98%",
+                dataset: "SMS Spam Dataset",
+                params: "Naive Bayes"
+            },
+            description: "A high-accuracy spam detection system using statistical NLP. Implements comprehensive text preprocessing and TF-IDF vectorization to effectively classify SMS and email messages.",
+            learning: "Learned effective text preprocessing pipelines and the application of statistical algorithms for text classification.",
+            github: "https://github.com/Zenthoriax/Spam-Classifier"
+        },
+        {
+            title: "Deep Learning Image Classification",
+            type: "Computer Vision",
+            tech: "Python, TensorFlow/Keras, CNN",
+            stats: {
+                accuracy: "Multi-class",
+                dataset: "Image Data",
+                params: "CNN Arch"
+            },
+            description: "A Multi-class image recognition system built with Convolutional Neural Networks (CNNs). Utilizes data augmentation and dropout layers to optimize model performance on unstructured visual data.",
+            learning: "Gained proficiency in handling unstructured visual data and implementing standard deep learning architectures.",
+            github: "https://github.com/jeevananthan-98/image-classification"
         }
     ];
 
     return (
         <section id="projects" className="section container">
             <motion.h2
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 style={{
-                    fontSize: 'clamp(2rem, 5vw, 3.5rem)',
-                    marginBottom: '3rem',
-                    borderLeft: '4px solid var(--accent)',
-                    paddingLeft: '1rem'
+                    fontSize: 'clamp(2rem, 5vw, 3rem)',
+                    marginBottom: '4rem',
+                    textAlign: 'center'
                 }}
             >
-                Research & <span className="text-accent">Models</span>
+                Selected <span className="text-accent">Works</span>
             </motion.h2>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '2rem' }}>
                 {projects.map((project, index) => (
                     <motion.a
                         href={project.github}
@@ -122,61 +147,48 @@ export function Projects() {
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 }}
                         style={{
-                            padding: '2rem',
+                            padding: '2.5rem',
                             display: 'flex',
                             flexDirection: 'column',
                             height: '100%',
-                            position: 'relative',
-                            overflow: 'hidden'
+                            textDecoration: 'none'
                         }}
                     >
-                        {/* Header Stripe */}
-                        <div style={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '4px',
-                            background: 'var(--accent)'
-                        }} />
-
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
-                            <div>
-                                <h3 style={{ fontSize: '1.5rem', marginBottom: '0.25rem' }}>{project.title}</h3>
-                                <p style={{ fontSize: '0.9rem', opacity: 0.6, fontFamily: 'monospace' }}>{project.type}</p>
-                            </div>
+                        <div style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span style={{ fontSize: '1.5rem' }}>⚡</span>
                             <span style={{
-                                fontSize: '0.8rem',
-                                padding: '0.25rem 0.5rem',
-                                border: '1px solid var(--accent)',
-                                borderRadius: '4px',
-                                color: 'var(--accent)',
-                                fontFamily: 'monospace'
+                                fontSize: '0.7rem',
+                                textTransform: 'uppercase',
+                                letterSpacing: '0.1em',
+                                border: '1px solid rgba(255,255,255,0.2)',
+                                padding: '0.2rem 0.6rem',
+                                borderRadius: '20px'
                             }}>
-                                MODEL CARD
+                                Project
                             </span>
                         </div>
 
+                        <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem' }}>{project.title}</h3>
+                        <p style={{ fontSize: '0.9rem', opacity: 0.5, marginBottom: '1.5rem' }}>{project.type}</p>
 
-                        <p style={{ marginBottom: '1.5rem', lineHeight: 1.6, opacity: 0.8, flexGrow: 1 }}>
+                        <p style={{ marginBottom: '2rem', lineHeight: 1.6, opacity: 0.7, flexGrow: 1, fontSize: '0.95rem' }}>
                             {project.description}
                         </p>
 
                         <div style={{
-                            marginTop: 'auto',
-                            paddingTop: '1rem',
-                            borderTop: '1px solid rgba(255,255,255,0.1)',
-                            fontSize: '0.9rem',
-                            color: 'var(--secondary)'
+                            paddingTop: '1.5rem',
+                            borderTop: '1px solid rgba(255,255,255,0.05)',
+                            fontSize: '0.85rem',
+                            color: 'var(--secondary)',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center'
                         }}>
-                            <span style={{ marginRight: '0.5rem' }}>⚡</span>
-                            {project.learning}
+                            <span>{project.tech.split(',')[0]}</span>
+                            <span className="text-accent" style={{ opacity: 0 }}>➜</span>
                         </div>
                     </motion.a>
                 ))}
-
-                {/* More Projects Card */}
-                <MoreProjectsCard />
             </div>
         </section>
     );

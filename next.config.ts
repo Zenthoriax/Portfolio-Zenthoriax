@@ -1,16 +1,20 @@
-import type { NextConfig } from "next";
+const repoName = "Portfolio-Zenthoriax";
+const isVercel = process.env.VERCEL === "1";
 
 const isProd = process.env.NODE_ENV === 'production';
-const isVercel = process.env.VERCEL === '1';
 
-const nextConfig: NextConfig = {
-  output: 'export',
+const nextConfig = {
+  output: "export", // 🔥 THIS IS MANDATORY
   images: {
-    unoptimized: true,
+    unoptimized: true
   },
-  // Only use basePath/assetPrefix on GitHub Pages (not Vercel)
-  basePath: isProd && !isVercel ? '/Portfolio-Zenthoriax' : '',
-  assetPrefix: isProd && !isVercel ? '/Portfolio-Zenthoriax/' : '',
+  trailingSlash: true, // Recommended for GitHub Pages
+  ...(isProd
+    ? {
+      basePath: `/${repoName}`,
+      assetPrefix: `/${repoName}/`
+    }
+    : {})
 };
 
 export default nextConfig;

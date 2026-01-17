@@ -4,6 +4,8 @@ import './globals.css';
 import { Navbar } from '@/components/ui/Navbar';
 import { Background } from '@/components/ui/Background';
 
+
+
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -28,7 +30,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${outfit.variable} antialiased`}>
+      <body className={`${inter.variable} ${outfit.variable}`}>
         <Background />
         <Navbar />
         {children}

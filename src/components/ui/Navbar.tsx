@@ -9,41 +9,42 @@ export function Navbar() {
 
     return (
         <nav
-            className="glass-panel"
             style={{
                 position: 'fixed',
-                top: '1rem',
+                top: '1.5rem',
                 left: '50%',
                 transform: 'translateX(-50%)',
-                width: '90%',
-                maxWidth: '1200px',
-                height: 'var(--header-height)',
                 zIndex: 100,
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '0 2rem',
-                marginTop: '1rem'
+                gap: '2rem',
+                padding: '0.75rem 2rem',
+                background: 'rgba(5, 5, 5, 0.6)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '50px',
+                boxShadow: '0 10px 20px -5px rgba(0,0,0,0.5)',
             }}
         >
-            {/* Logo Area */}
-            <div
-                onClick={scrollToTop}
-                style={{
-                    cursor: 'pointer',
-                    userSelect: 'none'
-                }}
-            >
-                <h2 style={{ fontSize: '1.5rem', fontWeight: 700 }}>
-                    Jeevananthan 
-                </h2>
-            </div>
-
             {/* Nav Links */}
-            <div style={{ display: 'flex', gap: '2rem' }}>
-                <a href="#projects" style={{ fontSize: '0.9rem', opacity: 0.8, fontWeight: 500 }}>Projects</a>
-                <a href="#skills" style={{ fontSize: '0.9rem', opacity: 0.8, fontWeight: 500 }}>Skills</a>
-                <a href="#contact" style={{ fontSize: '0.9rem', opacity: 0.8, fontWeight: 500 }}>Contact</a>
+            <div style={{ display: 'flex', gap: '1.5rem' }}>
+                {['Projects', 'Skills', 'Contact'].map((item) => (
+                    <a
+                        key={item}
+                        href={`#${item.toLowerCase()}`}
+                        style={{
+                            fontSize: '0.9rem',
+                            opacity: 0.7,
+                            fontWeight: 500,
+                            transition: 'opacity 0.2s'
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
+                        onMouseLeave={(e) => e.currentTarget.style.opacity = '0.7'}
+                    >
+                        {item}
+                    </a>
+                ))}
             </div>
         </nav>
     );
