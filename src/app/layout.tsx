@@ -23,6 +23,13 @@ export const metadata: Metadata = {
   description: 'AI/ML Student & Engineering Portfolio. Exploring applied machine learning and system design.',
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+};
+
 export default function RootLayout({
   children,
 }: {
