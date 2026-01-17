@@ -16,10 +16,16 @@ export function Background() {
         let height = window.innerHeight;
         let particles: Particle[] = [];
 
-        // Configuration
-        const particleCount = Math.min(Math.floor(window.innerWidth / 10), 100); // Responsive count
-        const connectionDistance = 150;
-        const interactionDistance = 200;
+        // Configuration - Responsive particle count
+        const getParticleCount = () => {
+            const baseCount = Math.floor(window.innerWidth / 15);
+            const isMobile = window.innerWidth < 768;
+            return Math.min(isMobile ? 40 : baseCount, 100);
+        };
+
+        const particleCount = getParticleCount();
+        const connectionDistance = window.innerWidth < 768 ? 120 : 150;
+        const interactionDistance = window.innerWidth < 768 ? 150 : 200;
 
         class Particle {
             x: number;

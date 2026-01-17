@@ -127,14 +127,18 @@ export function Projects() {
                 viewport={{ once: true }}
                 style={{
                     fontSize: 'clamp(2rem, 5vw, 3rem)',
-                    marginBottom: '4rem',
+                    marginBottom: 'clamp(2.5rem, 5vw, 4rem)',
                     textAlign: 'center'
                 }}
             >
                 Selected <span className="text-accent">Works</span>
             </motion.h2>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '2rem' }}>
+            <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fill, minmax(min(320px, 100%), 1fr))',
+                gap: 'clamp(1.5rem, 3vw, 2rem)'
+            }}>
                 {projects.map((project, index) => (
                     <motion.a
                         href={project.github}
@@ -147,15 +151,20 @@ export function Projects() {
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 }}
                         style={{
-                            padding: '2.5rem',
+                            padding: 'clamp(1.5rem, 4vw, 2.5rem)',
                             display: 'flex',
                             flexDirection: 'column',
                             height: '100%',
                             textDecoration: 'none'
                         }}
                     >
-                        <div style={{ marginBottom: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                            <span style={{ fontSize: '1.5rem' }}>⚡</span>
+                        <div style={{
+                            marginBottom: 'clamp(1rem, 2vw, 1.5rem)',
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center'
+                        }}>
+                            <span style={{ fontSize: 'clamp(1.2rem, 2vw, 1.5rem)' }}>⚡</span>
                             <span style={{
                                 fontSize: '0.7rem',
                                 textTransform: 'uppercase',
@@ -168,10 +177,10 @@ export function Projects() {
                             </span>
                         </div>
 
-                        <h3 style={{ fontSize: '1.4rem', marginBottom: '0.5rem' }}>{project.title}</h3>
-                        <p style={{ fontSize: '0.9rem', opacity: 0.5, marginBottom: '1.5rem' }}>{project.type}</p>
+                        <h3 style={{ fontSize: 'clamp(1.2rem, 2vw, 1.4rem)', marginBottom: '0.5rem' }}>{project.title}</h3>
+                        <p style={{ fontSize: 'clamp(0.85rem, 1.2vw, 0.9rem)', opacity: 0.5, marginBottom: 'clamp(1rem, 2vw, 1.5rem)' }}>{project.type}</p>
 
-                        <p style={{ marginBottom: '2rem', lineHeight: 1.6, opacity: 0.7, flexGrow: 1, fontSize: '0.95rem' }}>
+                        <p style={{ marginBottom: 'clamp(1.5rem, 3vw, 2rem)', lineHeight: 1.6, opacity: 0.7, flexGrow: 1, fontSize: 'clamp(0.9rem, 1.3vw, 0.95rem)' }}>
                             {project.description}
                         </p>
 

@@ -33,9 +33,9 @@ const Typewriter = ({ words, speed = 150, delay = 3000 }: { words: string[], spe
         <span style={{
             fontFamily: 'var(--font-outfit)',
             color: 'var(--secondary)',
-            fontSize: '1.5rem',
+            fontSize: 'clamp(1rem, 2.5vw, 1.5rem)',
             display: 'block',
-            minHeight: '2rem',
+            minHeight: 'clamp(1.5rem, 3vw, 2rem)',
         }}>
             {text}
             <span className="cursor-blink" style={{ color: 'var(--accent)' }}>.</span>
@@ -46,7 +46,7 @@ const Typewriter = ({ words, speed = 150, delay = 3000 }: { words: string[], spe
 export function Hero() {
     return (
         <section className="section container" style={{ alignItems: 'flex-start', minHeight: '100vh', justifyContent: 'center' }}>
-            <div style={{ maxWidth: '900px', zIndex: 10 }}>
+            <div style={{ maxWidth: 'min(900px, 100%)', width: '100%', zIndex: 10 }}>
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -55,11 +55,11 @@ export function Hero() {
                     <span
                         className="text-accent"
                         style={{
-                            fontSize: '1rem',
+                            fontSize: 'clamp(0.8rem, 1.5vw, 1rem)',
                             fontWeight: 600,
                             letterSpacing: '0.1em',
                             textTransform: 'uppercase',
-                            marginBottom: '1rem',
+                            marginBottom: 'clamp(0.75rem, 2vw, 1rem)',
                             display: 'block'
                         }}
                     >
@@ -73,9 +73,9 @@ export function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
                     style={{
-                        fontSize: 'clamp(3.5rem, 8vw, 7rem)',
-                        lineHeight: 1,
-                        marginBottom: '1.5rem',
+                        fontSize: 'clamp(2.5rem, 8vw, 7rem)',
+                        lineHeight: 1.1,
+                        marginBottom: 'clamp(1rem, 2vw, 1.5rem)',
                         fontWeight: 700,
                         letterSpacing: '-0.03em'
                     }}
@@ -90,8 +90,8 @@ export function Hero() {
                     style={{
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '1rem',
-                        marginBottom: '3rem'
+                        gap: 'clamp(0.75rem, 2vw, 1rem)',
+                        marginBottom: 'clamp(2rem, 4vw, 3rem)'
                     }}
                 >
                     <Typewriter
@@ -106,11 +106,11 @@ export function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
                     style={{
-                        fontSize: '1.1rem',
+                        fontSize: 'clamp(0.95rem, 1.8vw, 1.1rem)',
                         opacity: 0.7,
                         lineHeight: 1.7,
-                        maxWidth: '550px',
-                        marginBottom: '3.5rem'
+                        maxWidth: 'min(550px, 100%)',
+                        marginBottom: 'clamp(2.5rem, 5vw, 3.5rem)'
                     }}
                 >
                     Designing intelligence. I bridge the gap between abstract ML research and robust, production-grade deployment systems.
@@ -120,23 +120,29 @@ export function Hero() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    style={{ display: 'flex', gap: '1.5rem' }}
+                    style={{
+                        display: 'flex',
+                        gap: 'clamp(0.75rem, 2vw, 1.5rem)',
+                        flexWrap: 'wrap'
+                    }}
                 >
                     <a href="#projects" className="glass-panel" style={{
-                        padding: '1rem 2.5rem',
+                        padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2.5rem)',
                         fontWeight: 500,
                         background: 'rgba(255,255,255,0.1)',
-                        border: '1px solid rgba(255,255,255,0.2)'
+                        border: '1px solid rgba(255,255,255,0.2)',
+                        fontSize: 'clamp(0.9rem, 1.5vw, 1rem)'
                     }}>
                         Latest Work
                     </a>
                     <a href="https://github.com/Zenthoriax" target="_blank" style={{
-                        padding: '1rem 2.5rem',
+                        padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2.5rem)',
                         opacity: 0.7,
                         fontWeight: 500,
                         display: 'flex',
                         alignItems: 'center',
-                        gap: '0.5rem'
+                        gap: '0.5rem',
+                        fontSize: 'clamp(0.9rem, 1.5vw, 1rem)'
                     }}>
                         GitHub <span>↗</span>
                     </a>

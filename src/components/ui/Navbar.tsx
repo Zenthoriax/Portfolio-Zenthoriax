@@ -1,8 +1,6 @@
 'use client';
 
-// Simplified Navbar without hidden logic
 export function Navbar() {
-
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -11,14 +9,15 @@ export function Navbar() {
         <nav
             style={{
                 position: 'fixed',
-                top: '1.5rem',
+                top: 'clamp(0.75rem, 2vw, 1.5rem)',
                 left: '50%',
                 transform: 'translateX(-50%)',
+                width: 'min(90%, 600px)',
                 zIndex: 100,
                 display: 'flex',
                 alignItems: 'center',
-                gap: '2rem',
-                padding: '0.75rem 2rem',
+                gap: 'clamp(1rem, 3vw, 2rem)',
+                padding: 'clamp(0.5rem, 1.5vw, 0.75rem) clamp(1rem, 3vw, 2rem)',
                 background: 'rgba(5, 5, 5, 0.6)',
                 backdropFilter: 'blur(16px)',
                 WebkitBackdropFilter: 'blur(16px)',
@@ -28,16 +27,22 @@ export function Navbar() {
             }}
         >
             {/* Nav Links */}
-            <div style={{ display: 'flex', gap: '1.5rem' }}>
+            <div style={{
+                display: 'flex',
+                gap: 'clamp(0.75rem, 2vw, 1.5rem)',
+                width: '100%',
+                justifyContent: 'center'
+            }}>
                 {['Projects', 'Skills', 'Contact'].map((item) => (
                     <a
                         key={item}
                         href={`#${item.toLowerCase()}`}
                         style={{
-                            fontSize: '0.9rem',
+                            fontSize: 'clamp(0.8rem, 1.5vw, 0.9rem)',
                             opacity: 0.7,
                             fontWeight: 500,
-                            transition: 'opacity 0.2s'
+                            transition: 'opacity 0.2s',
+                            whiteSpace: 'nowrap'
                         }}
                         onMouseEnter={(e) => e.currentTarget.style.opacity = '1'}
                         onMouseLeave={(e) => e.currentTarget.style.opacity = '0.7'}
