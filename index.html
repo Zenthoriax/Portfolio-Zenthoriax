@@ -310,6 +310,37 @@ nav.stuck{background:rgba(6,6,9,.92);backdrop-filter:blur(22px);border-color:var
 .cla{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--mu);text-decoration:none;transition:color .2s}
 .cla:hover{color:var(--tx)}
 
+/* ── BLOG ── */
+.blog-wrap{display:flex}
+.bp{
+  background:var(--bg);padding:32px 30px;
+  display:flex;flex-direction:column;gap:14px;
+  text-decoration:none;color:var(--tx);
+  transition:background .22s;
+  position:relative;overflow:hidden;
+  border:1px solid var(--bd);
+  width:clamp(280px,38vw,460px);
+}
+.bp::after{
+  content:'';position:absolute;bottom:0;left:0;width:0;height:1px;
+  background:var(--ac);transition:width .4s cubic-bezier(.16,1,.3,1);
+}
+.bp:hover{background:var(--s1)}
+.bp:hover::after{width:100%}
+.bp-meta{display:flex;align-items:center;justify-content:space-between}
+.bp-tag{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--ac)}
+.bp-date{font-size:9px;letter-spacing:.12em;color:var(--mu)}
+.bp-title{font-family:var(--fd);font-size:clamp(16px,1.8vw,22px);font-weight:700;letter-spacing:-.02em;line-height:1.15}
+.bp-excerpt{font-size:12px;color:var(--mu);line-height:1.8}
+.bp-new{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:8px;letter-spacing:.18em;text-transform:uppercase;
+  background:rgba(201,245,63,.08);color:var(--ac);
+  border:1px solid rgba(201,245,63,.2);
+  padding:3px 9px;border-radius:2px;
+}
+@media(max-width:900px){.bp{width:100%}}
+
 /* ── FOOTER ── */
 footer{border-top:1px solid var(--bd);padding:20px 48px;display:flex;align-items:center;justify-content:space-between}
 .fc{font-size:9px;color:var(--mu);letter-spacing:.08em}
@@ -358,6 +389,7 @@ footer{border-top:1px solid var(--bd);padding:20px 48px;display:flex;align-items
   <ul class="nv">
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Work</a></li>
+    <li><a href="#blog">Blog</a></li>
     <li><a href="#cs">Contact</a></li>
     <li><a href="https://github.com/Zenthoriax" target="_blank">GitHub ↗</a></li>
   </ul>
@@ -604,6 +636,49 @@ footer{border-top:1px solid var(--bd);padding:20px 48px;display:flex;align-items
   </div>
 </div>
 
+<!-- CERTS -->
+<div class="sec" id="certs">
+  <div class="sec-h r">02 — Certifications</div>
+  <div class="cg r">
+    <div class="ct"><p class="cb">IBM · Coursera</p><p class="cn">Machine Learning with Python</p></div>
+    <div class="ct"><p class="cb">IBM · Coursera</p><p class="cn">Developing AI Applications with Python &amp; Flask</p></div>
+    <div class="ct"><p class="cb">University of Michigan · Coursera</p><p class="cn">Python Data Structures</p></div>
+    <div class="ct"><p class="cb">Board Infinity</p><p class="cn">Fundamentals of Java Programming</p></div>
+  </div>
+</div>
+
+<!-- BLOG -->
+<div class="sec" id="blog">
+  <div class="sec-h r">03 — Writing</div>
+
+  <div class="blog-wrap r" style="gap: 24px; flex-wrap: wrap;">
+    
+    <!-- Post 01 (New) -->
+    <a href="#blog-post-wsl2" class="bp">
+      <div class="bp-meta">
+        <span class="bp-tag">Architecture & Infra &nbsp;<span class="bp-new"><span style="width:4px;height:4px;border-radius:50%;background:var(--ac);animation:blink 2s infinite;flex-shrink:0;display:inline-block"></span>&nbsp;New</span></span>
+        <span class="bp-date">Jun 2026</span>
+      </div>
+      <h3 class="bp-title">Why I Dropped WSL2 for Native Windows AI Development</h3>
+      <p class="bp-excerpt">
+        When building local-first multi-agent systems, GPU overhead is the enemy. A technical breakdown of transitioning to a native Windows stack using Mamba, PowerShell, and Ollama to squeeze every drop of VRAM for edge inference.
+      </p>
+    </a>
+
+    <!-- Post 02 (Original) -->
+    <a href="#" class="bp">
+      <div class="bp-meta">
+        <span class="bp-tag">Meta</span>
+        <span class="bp-date">Jun 2026</span>
+      </div>
+      <h3 class="bp-title">Why I Started Writing — And What This Blog Actually Is</h3>
+      <p class="bp-excerpt">
+        I'm an AI/ML student who builds things by day and thinks about them at night. This is where the thinking lands. Expect breakdowns of papers I've read, decisions I made on real projects, and the occasional 3 AM realisation. No fluff.
+      </p>
+    </a>
+
+  </div>
+</div>
 <!-- CONTACT -->
 <section id="cs">
   <p class="ce r">— Let's connect —</p>
